@@ -1,7 +1,7 @@
 # Image:  ROS Humble Desktop Full
 
 ## Feature:
-- Light-weight Desktop from [here](ghcr.io/devcontainers/features/desktop-lite:1)
+- Light-weight Desktop from [here](https://github.com/devcontainers/features/tree/main/src/desktop-lite)
 
 
 ## Package installed:
