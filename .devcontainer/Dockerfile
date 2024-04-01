@@ -23,16 +23,31 @@ RUN sudo apt update && sudo apt upgrade -y
 # Install Git and add user ID
 RUN sudo apt install -y git \
     && git config --global user.name "Your Name" \
-    && git config --global user.email youremail@email.com
+    && git config --global user.email youremail@yourcompany.com
 
 
-# Install joint state publisher package for ROS
+# Install packages for navigation
 RUN sudo apt install ros-humble-joint-state-publisher
 RUN sudo apt install ros-humble-joint-state-publisher-gui
+RUN sudo apt install ros-humble-tf2-tools
+RUN sudo apt install ros-humble-rmw-cyclonedds-cpp -y
+RUN sudo apt install ros-humble-slam-toolbox -y
+RUN sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup -y
+RUN sudo apt install python3-pip -y \
+    && pip3 install pyserial
 
 # Rosdep update
-RUN rosdep update
+RUN sudo apt-get update
+RUN export ROS_DISTRO=humble
+RUN rosdep update --include-eol-distros 
 
-# Source the ROS setup file
+# Add several commands to bashrc
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 RUN echo "source /ros2_ws/install/setup.bash" >> ~/.bashrc
+RUN echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
+
+
+
+
+
+
