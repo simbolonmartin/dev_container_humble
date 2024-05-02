@@ -32,7 +32,7 @@ RUN sudo apt update \
     && pip install -U colcon-common-extensions \
     && echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc \
     && echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.bashrc \
-    && echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc \
+    && echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc 
 
 # Install packages for navigation
 RUN sudo apt install ros-humble-joint-state-publisher
