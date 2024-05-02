@@ -26,11 +26,13 @@ RUN sudo apt install -y git \
     && git config --global user.name "Your Name" \
     && git config --global user.email youremail@yourcompany.com
 
-# Install colcon auto-completion
+# Install colcon auto-completion and colcon_cd
 RUN sudo apt update \
     && sudo apt install -y python3-pip \
     && pip install -U colcon-common-extensions \
-    && echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
+    && echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc \
+    && echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.bashrc \
+    && echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc \
 
 # Install packages for navigation
 RUN sudo apt install ros-humble-joint-state-publisher
@@ -49,6 +51,6 @@ RUN rosdep update --include-eol-distros
 
 # Add several commands to bashrc
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
-RUN echo "source /ros2_ws/install/setup.bash" >> ~/.bashrc
+RUN echo "source /dev_container_humble/install/setup.bash" >> ~/.bashrc
 RUN echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
 

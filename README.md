@@ -7,6 +7,6 @@ This dev container configuration installs the feature and packages below that ty
 ## Package installed:
 - joint state publisher and joint state publisher GUI
 - git user id
-- pip installer and auto-complete colcon
+- pip installer, auto-complete colcon, and colcon_cd 
 - python extension for vs code
 - ros navigation tools (tf2-tools, slam-toolbox, nav2-bringup, navigation2)
