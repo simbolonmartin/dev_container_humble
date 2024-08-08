@@ -12,9 +12,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
+
 # Switch from root to user
 USER $USERNAME
-
 
 # Add user to video group to allow access to webcam
 RUN sudo usermod --append --groups video $USERNAME
@@ -41,6 +41,8 @@ RUN sudo apt install ros-humble-joint-state-publisher-gui
 RUN sudo apt install ros-humble-tf2-tools
 RUN sudo apt install ros-humble-rmw-cyclonedds-cpp -y
 RUN sudo apt install ros-humble-slam-toolbox -y
+RUN sudo apt install ros-humble-cartographer -y \
+    && sudo apt install ros-humble-cartographer-ros -y 
 RUN sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup -y
 RUN sudo apt install python3-pip -y \
     && pip3 install pyserial
